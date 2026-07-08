@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Intranet de Trabajo | Sumaq Awaykuna</title>
+    <title>Recuperar Contraseña | Sumaq Awaykuna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -131,7 +132,7 @@
                 0 8px 32px rgba(110, 30, 54, 0.18),
                 inset 0 1px 1px rgba(255, 255, 255, 0.8),
                 inset 0 -1px 12px rgba(255, 255, 255, 0.25);
-            padding: 2.75rem 2.25rem 2.25rem;
+            padding: 2rem 2.25rem 1.75rem;
             overflow: hidden;
         }
 
@@ -151,7 +152,7 @@
             align-items: center;
             justify-content: center;
             gap: .65rem;
-            margin-bottom: .5rem;
+            margin-bottom: .4rem;
         }
 
         .brand-mark .line {
@@ -191,26 +192,96 @@
             font-weight: 800;
             color: var(--maroon);
             text-align: center;
-            font-size: 1.65rem;
-            line-height: 1.25;
+            font-size: 1.5rem;
+            line-height: 1.2;
             letter-spacing: .3px;
-            margin-bottom: 2rem;
+            margin-bottom: .5rem;
+        }
+
+        .brand-subtitle {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-top: .15rem;
+        }
+
+        .recovery-lead {
+            text-align: center;
+            font-size: .84rem;
+            color: rgba(74, 34, 51, 0.75);
+            line-height: 1.55;
+            margin-bottom: 1.4rem;
+        }
+
+        /* ---------- Selector de método (tabs tipo pill) ---------- */
+        .method-switch {
+            display: flex;
+            background: rgba(110, 30, 54, 0.08);
+            border-radius: 14px;
+            padding: .3rem;
+            margin-bottom: 1.5rem;
+            gap: .3rem;
+        }
+
+        .method-switch input {
+            display: none;
+        }
+
+        .method-switch label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            padding: .6rem .5rem;
+            border-radius: 11px;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .4px;
+            color: var(--ink);
+            opacity: .6;
+            cursor: pointer;
+            transition: all .2s ease;
+            text-transform: uppercase;
+        }
+
+        .method-switch label i {
+            font-size: .95rem;
+        }
+
+        .method-switch input:checked+label {
+            background: linear-gradient(180deg, var(--maroon), var(--maroon-dark));
+            color: #fff;
+            opacity: 1;
+            box-shadow: 0 6px 16px rgba(110, 30, 54, 0.3);
+        }
+
+        /* ---------- Paneles de método ---------- */
+        .method-panel {
+            display: none;
+        }
+
+        #method-email:checked~.panels #panel-email,
+        #method-phone:checked~.panels #panel-phone {
+            display: block;
         }
 
         .field-group {
             position: relative;
-            margin-bottom: 1.15rem;
+            margin-bottom: 1rem;
         }
 
         .field-group .form-control {
             background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(110, 30, 54, 0.18);
             border-radius: 14px;
-            padding: .85rem 3rem .85rem 3rem;
-            font-size: .95rem;
+            padding: .7rem 1rem .7rem 3rem;
+            font-size: .92rem;
             letter-spacing: .4px;
             color: var(--ink);
-            height: 56px;
+            height: 48px;
         }
 
         .field-group .form-control::placeholder {
@@ -236,28 +307,42 @@
             pointer-events: none;
         }
 
-        .icon-right {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gold);
-            font-size: 1.1rem;
-            pointer-events: none;
-            padding-left: 12px;
-            border-left: 1px solid rgba(110, 30, 54, 0.18);
+        /* prefijo de país para celular */
+        .phone-field {
+            display: flex;
+            gap: .5rem;
         }
 
-        .icon-toggle {
-            pointer-events: auto;
-            cursor: pointer;
-            transition: color .15s ease;
+        .phone-prefix {
+            width: 92px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(110, 30, 54, 0.18);
+            border-radius: 14px;
+            height: 48px;
+            font-size: .88rem;
+            font-weight: 700;
+            color: var(--ink);
+            padding: 0 .5rem 0 .9rem;
         }
 
-        .icon-toggle:hover,
-        .icon-toggle:focus {
-            color: var(--maroon);
+        .phone-prefix:focus {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(199, 149, 47, 0.18);
             outline: none;
+        }
+
+        .phone-field .field-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .method-hint {
+            font-size: .74rem;
+            color: rgba(74, 34, 51, 0.6);
+            margin: -.4rem 0 1.1rem .2rem;
+            line-height: 1.5;
         }
 
         .btn-ingresar {
@@ -281,39 +366,26 @@
             color: #fff;
         }
 
-        .forgot-link {
-            display: block;
+        .back-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
             text-align: center;
-            margin-top: 1.25rem;
+            margin-top: 1.35rem;
             color: var(--maroon);
             font-size: .85rem;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
-            border-bottom: 1px dashed rgba(110, 30, 54, 0.5);
-            display: inline-block;
-            width: 100%;
         }
 
-        .forgot-wrap {
-            text-align: center;
-        }
-
-        .forgot-wrap a {
-            color: var(--maroon);
-            font-size: .85rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(110, 30, 54, 0.55);
-            padding-bottom: 1px;
-        }
-
-        .forgot-wrap a:hover {
+        .back-login:hover {
             color: var(--maroon-dark);
         }
 
         .signup-hint {
             text-align: center;
-            margin: 1.25rem 0 0;
+            margin: .9rem 0 0;
             font-size: .82rem;
             color: rgba(74, 34, 51, 0.75);
         }
@@ -331,11 +403,11 @@
 
         @media (max-width: 480px) {
             .glass-card {
-                padding: 2.25rem 1.5rem 1.75rem;
+                padding: 2rem 1.5rem 1.6rem;
             }
 
             .brand-title {
-                font-size: 1.35rem;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -383,66 +455,72 @@
                 <span class="line reverse"></span>
             </div>
 
-            <h1 class="brand-title">INTRANET DE TRABAJO<br>SUMAQ AWAYKUNA</h1>
+            <h1 class="brand-title">RECUPERAR CONTRASEÑA<br><span class="brand-subtitle">SUMAQ AWAYKUNA</span></h1>
 
-            <form action="procesar_login.php" method="POST" autocomplete="off">
-                <div class="field-group">
-                    <i class="icon-left bi bi-person"></i>
-                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" required>
-                    <i class="icon-right bi bi-people-fill"></i>
+            <p class="recovery-lead">
+                Elige cómo quieres recibir el código de verificación para restablecer tu contraseña.
+            </p>
+
+            <form action="{{ url('/recuperar-password') }}" method="POST" autocomplete="off">
+                @csrf
+
+                {{-- SELECTOR DE MÉTODO --}}
+                <input type="radio" name="metodo" id="method-email" value="email" checked>
+                <input type="radio" name="metodo" id="method-phone" value="phone">
+
+                <div class="method-switch">
+                    <label for="method-email"><i class="bi bi-envelope-fill"></i> Correo</label>
+                    <label for="method-phone"><i class="bi bi-phone-fill"></i> Celular</label>
                 </div>
 
-                <div class="field-group">
-                    <i class="icon-left bi bi-lock"></i>
-                    <input type="password" name="password" id="passwordField" class="form-control" placeholder="Contraseña" required>
-                    <i class="icon-right icon-toggle bi bi-eye-fill" id="togglePassword" role="button" tabindex="0" aria-label="Mostrar contraseña"></i>
+                <div class="panels">
+                    {{-- PANEL: CORREO --}}
+                    <div class="method-panel" id="panel-email">
+                        <div class="field-group">
+                            <i class="icon-left bi bi-envelope"></i>
+                            <input type="email" name="correo" class="form-control" placeholder="Correo electrónico">
+                        </div>
+                        <p class="method-hint">
+                            <i class="bi bi-info-circle"></i>
+                            Te enviaremos un enlace de recuperación al correo registrado en tu cuenta.
+                        </p>
+                    </div>
+
+                    {{-- PANEL: CELULAR --}}
+                    <div class="method-panel" id="panel-phone">
+                        <div class="phone-field mb-1">
+                            <select class="phone-prefix" name="prefijo">
+                                <option value="+51" selected>🇵🇪 +51</option>
+                                <option value="+593">🇪🇨 +593</option>
+                                <option value="+591">🇧🇴 +591</option>
+                                <option value="+56">🇨🇱 +56</option>
+                                <option value="+57">🇨🇴 +57</option>
+                            </select>
+                            <div class="field-group">
+                                <i class="icon-left bi bi-phone"></i>
+                                <input type="tel" name="celular" class="form-control" placeholder="Número de celular">
+                            </div>
+                        </div>
+                        <p class="method-hint">
+                            <i class="bi bi-info-circle"></i>
+                            Te enviaremos un código SMS de 6 dígitos al número registrado.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- <button type="submit" class="btn-ingresar">Ingresar al Sistema</button> -->
-
-                <a href="{{ route('dashboard') }}"
-                    class="btn-ingresar"
-                    style="display: inline-block; text-decoration: none; text-align: center;">
-                    Ingresar al Sistema
-                </a>
-
-                <div class="forgot-wrap mt-3">
-                    <a href=" {{  route('password.request') }}">¿Olvidaste tu contraseña?</a>
-                </div>
+                <button type="submit" class="btn-ingresar">Enviar Código</button>
             </form>
 
-            <p class="signup-hint">¿No tienes cuenta? <a href="{{ route('register') }}">Crear una cuenta</a></p>
+            <a href="{{ route('login') }}" class="back-login">
+                <i class="bi bi-arrow-left"></i> Volver a Iniciar Sesión
+            </a>
+
+            <p class="signup-hint">¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate aquí</a></p>
 
         </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script>
-        function setupPasswordToggle(inputId, toggleId) {
-            const input = document.getElementById(inputId);
-            const toggle = document.getElementById(toggleId);
-            if (!input || !toggle) return;
-
-            const flip = () => {
-                const isHidden = input.type === 'password';
-                input.type = isHidden ? 'text' : 'password';
-                toggle.classList.toggle('bi-eye-fill', !isHidden);
-                toggle.classList.toggle('bi-eye-slash-fill', isHidden);
-                toggle.setAttribute('aria-label', isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña');
-            };
-
-            toggle.addEventListener('click', flip);
-            toggle.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    flip();
-                }
-            });
-        }
-
-        setupPasswordToggle('passwordField', 'togglePassword');
-    </script>
 </body>
 
 </html>

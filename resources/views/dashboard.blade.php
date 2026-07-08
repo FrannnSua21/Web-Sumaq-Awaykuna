@@ -7,14 +7,14 @@
     .quote-banner {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        padding: 1.1rem 1.6rem;
-        border-radius: 18px;
-        margin-bottom: 1.5rem;
+        gap: .85rem;
+        padding: .9rem 1.3rem;
+        border-radius: 14px;
+        margin-bottom: 1.25rem;
     }
 
     .quote-icon {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: var(--gold);
         flex-shrink: 0;
     }
@@ -24,41 +24,41 @@
         font-style: italic;
         font-weight: 700;
         color: var(--maroon-dark);
-        font-size: .95rem;
+        font-size: .82rem;
         line-height: 1.5;
     }
 
     .card-surface {
-        border-radius: 24px;
-        margin-bottom: 1.5rem;
+        border-radius: 18px;
+        margin-bottom: 1.25rem;
         overflow: hidden;
     }
 
     .hero-card .hero-image {
         width: 100%;
-        height: 300px;
+        height: 250px;
         object-fit: cover;
         display: block;
     }
 
     .hero-body {
-        padding: 1.75rem 2rem 2rem;
+        padding: 1.35rem 1.6rem 1.6rem;
     }
 
     .hero-body h2 {
         font-family: 'Playfair Display', serif;
         font-weight: 800;
         color: var(--maroon-dark);
-        font-size: 1.55rem;
-        margin-bottom: .65rem;
+        font-size: 1.25rem;
+        margin-bottom: .5rem;
     }
 
     .hero-body p {
         margin: 0;
         color: var(--ink);
-        opacity: .82;
-        line-height: 1.65;
-        font-size: .95rem;
+        opacity: .8;
+        line-height: 1.6;
+        font-size: .82rem;
     }
 
     .stats-card {
@@ -66,96 +66,96 @@
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 1rem;
-        padding: 1.35rem 1.75rem;
+        gap: .85rem;
+        padding: 1.1rem 1.4rem;
         margin-bottom: 0;
     }
 
     .stats-label {
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: .5px;
-        font-size: .8rem;
+        letter-spacing: .4px;
+        font-size: .68rem;
         color: var(--maroon-dark);
     }
 
     .stats-digits {
         display: flex;
-        gap: .5rem;
+        gap: .4rem;
     }
 
     .stats-digits span {
-        width: 44px;
-        height: 50px;
+        width: 38px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: #fff;
-        border: 1px solid rgba(110, 30, 54, 0.15);
-        border-radius: 12px;
+        border: 1px solid rgba(110, 30, 54, 0.13);
+        border-radius: 10px;
         font-family: 'Playfair Display', serif;
         font-weight: 800;
-        font-size: 1.35rem;
+        font-size: 1.1rem;
         color: var(--maroon-dark);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
     }
 
     .stats-digits span.highlight {
         background: linear-gradient(160deg, var(--maroon), var(--maroon-dark));
         color: #fff;
         border-color: var(--maroon-dark);
-        box-shadow: 0 4px 14px rgba(110, 30, 54, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        box-shadow: 0 3px 10px rgba(110, 30, 54, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     .notice-card {
-        border-radius: 22px;
-        padding: 1.5rem 1.6rem;
+        border-radius: 16px;
+        padding: 1.25rem 1.35rem;
         color: #fff;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
     }
 
     .notice-label {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: .7rem;
-        letter-spacing: 1.5px;
+        font-size: .62rem;
+        letter-spacing: 1.2px;
         font-weight: 800;
         color: var(--pink-soft);
-        margin-bottom: .85rem;
+        margin-bottom: .7rem;
     }
 
     .notice-label i {
-        font-size: 1.15rem;
+        font-size: .95rem;
         color: var(--gold);
     }
 
     .notice-card h3 {
         font-family: 'Playfair Display', serif;
         font-weight: 800;
-        font-size: 1.3rem;
-        margin-bottom: .55rem;
+        font-size: 1.05rem;
+        margin-bottom: .45rem;
     }
 
     .notice-card p {
-        font-size: .87rem;
-        opacity: .92;
+        font-size: .76rem;
+        opacity: .9;
         margin: 0;
-        line-height: 1.55;
+        line-height: 1.5;
     }
 
     .quicklinks-card {
-        border-radius: 22px;
-        padding: 1.5rem 1.6rem;
+        border-radius: 16px;
+        padding: 1.25rem 1.35rem;
     }
 
     .quicklinks-title {
         font-weight: 800;
         text-transform: uppercase;
-        font-size: .78rem;
-        letter-spacing: 1px;
+        font-size: .66rem;
+        letter-spacing: .8px;
         color: var(--maroon-dark);
-        margin-bottom: .75rem;
+        margin-bottom: .6rem;
     }
 
     .quicklinks-card ul {
@@ -165,31 +165,31 @@
     }
 
     .quicklinks-card li+li {
-        border-top: 1px solid rgba(110, 30, 54, 0.08);
+        border-top: 1px solid rgba(110, 30, 54, 0.07);
     }
 
     .quicklinks-card a {
         display: flex;
         align-items: center;
-        gap: .75rem;
-        padding: .8rem .25rem;
+        gap: .6rem;
+        padding: .65rem .2rem;
         color: var(--ink);
         text-decoration: none;
         font-weight: 700;
-        font-size: .88rem;
+        font-size: .76rem;
         transition: all .15s ease;
     }
 
     .quicklinks-card a i {
         color: var(--maroon);
-        font-size: 1.1rem;
-        width: 20px;
+        font-size: .95rem;
+        width: 18px;
         text-align: center;
     }
 
     .quicklinks-card a:hover {
         color: var(--maroon-dark);
-        padding-left: .5rem;
+        padding-left: .4rem;
     }
 
     @media (max-width: 767px) {
@@ -215,8 +215,9 @@
     <div class="col-lg-8">
 
         <div class="card-surface hero-card glass">
-            <img src="{{ asset('images/hero-tejido.jpg') }}" alt="Artesana tejiendo" class="hero-image"
-                onerror="this.src='https://placehold.co/900x400/6E1E36/F8F2E7?text=Sumaq+Awaykuna'">
+            <img src="{{ asset('images/tejidos/tejido14.jpeg') }}"
+                alt="Tejido artesanal"
+                class="hero-image">
 
             <div class="hero-body">
                 <h2>Fortaleciendo nuestra tradición, creando oportunidades</h2>

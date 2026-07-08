@@ -484,7 +484,7 @@
                 <button type="submit" class="btn-ingresar">Crear Cuenta</button>
             </form>
 
-            <p class="signup-hint">¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></p>
+            <p class="signup-hint">¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a></p>
 
         </div>
     </div>

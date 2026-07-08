@@ -5,38 +5,38 @@
 @push('styles')
 <style>
     .page-header {
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.4rem;
     }
 
     .page-header h1 {
         font-family: 'Playfair Display', serif;
         font-weight: 800;
         color: var(--maroon-dark);
-        font-size: 1.9rem;
-        border-left: 5px solid var(--maroon);
-        padding-left: 1rem;
+        font-size: 1.5rem;
+        border-left: 4px solid var(--maroon);
+        padding-left: .85rem;
         margin: 0;
     }
 
     .process-card {
-        border-radius: 24px;
-        padding: 1.75rem 2rem;
+        border-radius: 18px;
+        padding: 1.4rem 1.6rem;
     }
 
     .process-card h2 {
         font-family: 'Playfair Display', serif;
         font-weight: 700;
         color: var(--maroon-dark);
-        font-size: 1.3rem;
-        margin-bottom: .75rem;
+        font-size: 1.05rem;
+        margin-bottom: .6rem;
     }
 
     .process-card>p {
         color: var(--ink);
-        opacity: .85;
-        line-height: 1.65;
-        font-size: .95rem;
-        margin-bottom: 1.5rem;
+        opacity: .82;
+        line-height: 1.6;
+        font-size: .8rem;
+        margin-bottom: 1.25rem;
     }
 
     .checklist {
@@ -47,9 +47,9 @@
 
     .checklist li {
         display: flex;
-        gap: .85rem;
-        padding: .85rem 0;
-        border-top: 1px solid rgba(110, 30, 54, 0.08);
+        gap: .7rem;
+        padding: .7rem 0;
+        border-top: 1px solid rgba(110, 30, 54, 0.07);
     }
 
     .checklist li:first-child {
@@ -58,8 +58,8 @@
 
     .checklist i {
         color: var(--maroon);
-        font-size: 1.05rem;
-        margin-top: .15rem;
+        font-size: .9rem;
+        margin-top: .12rem;
         flex-shrink: 0;
     }
 
@@ -70,57 +70,58 @@
 
     .checklist span {
         color: var(--ink);
-        opacity: .85;
-        font-size: .92rem;
+        opacity: .82;
+        font-size: .78rem;
         line-height: 1.5;
     }
 
     /* GALERÍA */
     .gallery-card {
-        border-radius: 24px;
+        border-radius: 18px;
         overflow: hidden;
-        padding: .6rem;
+        padding: .4rem;
         display: grid;
         grid-template-rows: 1.4fr 1fr;
-        gap: .6rem;
-        height: 100%;
-        min-height: 480px;
+        gap: .4rem;
+        width: 88%;
+        margin: 0 auto;
+        min-height: 360px;
     }
 
     .gallery-main img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 18px;
+        border-radius: 14px;
         display: block;
     }
 
     .gallery-sub {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: .6rem;
+        gap: .5rem;
     }
 
     .gallery-sub img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 16px;
+        border-radius: 12px;
         display: block;
     }
 
     /* PALETA DE COLORES (yarns) */
     .yarn-flags {
         display: flex;
-        gap: .6rem;
-        margin-top: 2rem;
+        gap: .5rem;
+        margin-top: 1.6rem;
     }
 
     .yarn-flag {
-        width: 46px;
-        height: 58px;
+        width: 38px;
+        height: 48px;
         clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
     }
 
     .yarn-flag:nth-child(1) {
@@ -145,8 +146,8 @@
 
     @media (max-width: 991px) {
         .gallery-card {
-            min-height: 340px;
-            margin-top: 1.5rem;
+            min-height: 300px;
+            margin-top: 1.25rem;
         }
     }
 </style>
@@ -205,14 +206,16 @@
     <div class="col-lg-5">
         <div class="gallery-card glass">
             <div class="gallery-main">
-                <img src="{{ asset('images/tejido-1.jpg') }}" alt="Tejido artesanal"
-                    onerror="this.src='https://placehold.co/600x400/6E1E36/F8F2E7?text=Sumaq+Awaykuna'">
+                <img src="{{ asset('images/tejidos/tejido1.jpeg') }}"
+                    alt="Tejido artesanal">
             </div>
+
             <div class="gallery-sub">
-                <img src="{{ asset('images/tejido-2.jpg') }}" alt="Detalle de tejido"
-                    onerror="this.src='https://placehold.co/300x220/C7952F/F8F2E7?text=Detalle'">
-                <img src="{{ asset('images/tejido-3.jpg') }}" alt="Detalle de tejido"
-                    onerror="this.src='https://placehold.co/300x220/6E1E36/F8F2E7?text=Detalle'">
+                <img src="{{ asset('images/tejidos/tejido2.jpeg') }}"
+                    alt="Detalle de tejido">
+
+                <img src="{{ asset('images/tejidos/tejido3.jpeg') }}"
+                    alt="Detalle de tejido">
             </div>
         </div>
     </div>

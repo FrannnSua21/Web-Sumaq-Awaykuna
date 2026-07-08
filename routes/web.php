@@ -2,26 +2,74 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
+/*
+|--------------------------------------------------------------------------
+| Autenticación
+|--------------------------------------------------------------------------
+*/
 
-// Ya existente, verifica que apunte a tu vista dashboard
+Route::get('/', function () {
+    return redirect()->route('login');
+})->name('home');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// NUEVO — el hub de módulos
+
+/*
+|--------------------------------------------------------------------------
+| Módulos Administrativos
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/modulos-administrativos', function () {
     return view('modulos-administrativos');
-});
+})->name('modulos.administrativos');
 
-// Reutiliza la vista de Control de Diseño y Producción
+
+/*
+|--------------------------------------------------------------------------
+| Producción
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/produccion', function () {
     return view('control-diseno-produccion');
-});
+})->name('produccion');
 
-// Reutiliza la vista de Catálogo de Diseños
+
+/*
+|--------------------------------------------------------------------------
+| Catálogo de Diseños
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/productos', function () {
     return view('catalogo-diseno');
-});
+})->name('productos');
+
+
+
+
+
+/////
+
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('password.request');

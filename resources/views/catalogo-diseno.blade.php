@@ -6,27 +6,27 @@
 <style>
     .catalog-flags {
         display: flex;
-        gap: .6rem;
-        margin-bottom: 1.75rem;
+        gap: .5rem;
+        margin-bottom: 1.4rem;
         position: relative;
     }
 
     .catalog-flags::before {
         content: "";
         position: absolute;
-        top: 22px;
+        top: 18px;
         left: 0;
         right: 0;
         height: 1px;
-        background: rgba(110, 30, 54, 0.2);
+        background: rgba(110, 30, 54, 0.18);
         z-index: 0;
     }
 
     .catalog-flags .yarn-flag {
-        width: 44px;
-        height: 54px;
+        width: 36px;
+        height: 44px;
         clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
         position: relative;
         z-index: 1;
     }
@@ -55,31 +55,31 @@
         font-family: 'Playfair Display', serif;
         font-weight: 800;
         color: var(--maroon-dark);
-        font-size: 2rem;
-        margin-bottom: .5rem;
+        font-size: 1.55rem;
+        margin-bottom: .4rem;
     }
 
     .catalog-subtitle {
         color: var(--maroon);
         font-weight: 800;
-        font-size: 1.05rem;
-        margin-bottom: 1rem;
+        font-size: .9rem;
+        margin-bottom: .85rem;
     }
 
     .catalog-text p {
         color: var(--ink);
-        opacity: .85;
-        line-height: 1.7;
-        font-size: .93rem;
-        margin-bottom: 1.1rem;
+        opacity: .82;
+        line-height: 1.65;
+        font-size: .8rem;
+        margin-bottom: 1rem;
     }
 
     .catalog-footer {
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(110, 30, 54, 0.15);
-        font-size: .78rem;
-        letter-spacing: .5px;
+        margin-top: 1.6rem;
+        padding-top: .85rem;
+        border-top: 1px solid rgba(110, 30, 54, 0.13);
+        font-size: .68rem;
+        letter-spacing: .4px;
         color: var(--maroon);
         font-weight: 700;
         text-transform: uppercase;
@@ -89,16 +89,16 @@
     .tag-gallery {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: .6rem;
-        border-radius: 24px;
-        padding: .6rem;
+        gap: .5rem;
+        border-radius: 18px;
+        padding: .5rem;
         height: 100%;
-        min-height: 480px;
+        min-height: 420px;
     }
 
     .tag-item {
         position: relative;
-        border-radius: 18px;
+        border-radius: 14px;
         overflow: hidden;
     }
 
@@ -111,23 +111,23 @@
 
     .tag-badge {
         position: absolute;
-        left: 12px;
-        bottom: 12px;
-        background: rgba(110, 30, 54, 0.9);
+        left: 10px;
+        bottom: 10px;
+        background: rgba(110, 30, 54, 0.88);
         color: #fff;
-        font-size: .68rem;
+        font-size: .6rem;
         font-weight: 800;
-        letter-spacing: 1px;
-        padding: .4rem .8rem;
+        letter-spacing: .6px;
+        padding: .32rem .7rem;
         border-radius: 30px;
         text-transform: uppercase;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     @media (max-width: 991px) {
         .tag-gallery {
-            min-height: 340px;
-            margin-top: 1.5rem;
+            min-height: 300px;
+            margin-top: 1.25rem;
         }
     }
 </style>
@@ -139,7 +139,7 @@
 
     {{-- COLUMNA TEXTO --}}
     <div class="col-lg-6">
-        <div class="glass" style="border-radius: 24px; padding: 2rem 2.25rem;">
+        <div class="glass" style="border-radius: 18px; padding: 1.6rem 1.85rem;">
 
             <div class="catalog-flags">
                 <div class="yarn-flag"></div>
@@ -171,26 +171,27 @@
     {{-- GALERÍA CON ETIQUETAS --}}
     <div class="col-lg-6">
         <div class="tag-gallery glass">
+
             <div class="tag-item">
-                <img src="{{ asset('images/crochet.jpg') }}" alt="Crochet"
-                    onerror="this.src='https://placehold.co/400x300/6E1E36/F8F2E7?text=Crochet'">
-                <span class="tag-badge">Crochet</span>
+                <img src="{{ asset('images/tejidos/tejido1.jpeg') }}" alt="Tejido 1">
+                <span class="tag-badge">Tejido 1</span>
             </div>
+
             <div class="tag-item">
-                <img src="{{ asset('images/texturas.jpg') }}" alt="Texturas únicas"
-                    onerror="this.src='https://placehold.co/400x300/C7952F/F8F2E7?text=Texturas'">
-                <span class="tag-badge">Texturas únicas</span>
+                <img src="{{ asset('images/tejidos/tejido2.jpeg') }}" alt="Tejido 2">
+                <span class="tag-badge">Tejido 2</span>
             </div>
+
             <div class="tag-item">
-                <img src="{{ asset('images/dos-agujas.jpg') }}" alt="A dos agujas"
-                    onerror="this.src='https://placehold.co/400x300/551327/F8F2E7?text=Dos+Agujas'">
-                <span class="tag-badge">A dos agujas</span>
+                <img src="{{ asset('images/tejidos/tejido3.jpeg') }}" alt="Tejido 3">
+                <span class="tag-badge">Tejido 3</span>
             </div>
+
             <div class="tag-item">
-                <img src="{{ asset('images/maquina.jpg') }}" alt="A máquina"
-                    onerror="this.src='https://placehold.co/400x300/6E1E36/F8F2E7?text=A+Maquina'">
-                <span class="tag-badge">A máquina</span>
+                <img src="{{ asset('images/tejidos/tejido4.jpeg') }}" alt="Tejido 4">
+                <span class="tag-badge">Tejido 4</span>
             </div>
+
         </div>
     </div>
 
