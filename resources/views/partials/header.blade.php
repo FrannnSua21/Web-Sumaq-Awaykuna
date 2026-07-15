@@ -10,14 +10,29 @@
     </div>
 
     <div class="dropdown user-menu-wrap">
+
         @php
-        $userName = auth()->check() ? auth()->user()->name : 'Sra. Carmen Mendoza';
-        $userRole = auth()->check() ? (auth()->user()->rol ?? 'Presidenta de Junta Directiva') : 'Presidenta de Junta Directiva';
-        $initials = collect(explode(' ', $userName))->map(fn($p) => mb_substr($p, 0, 1))->take(2)->join('');
+        $usuarioActual = auth()->user();
+        $personaActual = $usuarioActual?->persona;
+
+        $userName = $personaActual
+        ? trim($personaActual->nombres.' '.$personaActual->apellidos)
+        : ($usuarioActual->username ?? 'Invitado');
+
+        $userRole = $usuarioActual
+        ? (optional($usuarioActual->cargo)->nombre ?? ucfirst(str_replace('_',' ', $usuarioActual->area ?? '')))
+        : '';
+
+        $initials = collect(explode(' ', $userName))->filter()->map(fn($p) => mb_substr($p, 0, 1))->take(2)->join('');
         @endphp
 
         <div class="header-user" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            @if($personaActual && $personaActual->foto)
+            <img src="{{ asset($personaActual->foto) }}" class="avatar avatar-img" alt="Foto de perfil">
+            @else
             <div class="avatar">{{ strtoupper($initials) }}</div>
+            @endif
 
             <div class="user-info">
                 <span class="user-name">{{ $userName }}</span>
@@ -29,12 +44,12 @@
 
         <ul class="dropdown-menu dropdown-menu-end user-dropdown-menu">
             <li>
-                <a class="dropdown-item" href="{{ url('/perfil') }}">
+                <a class="dropdown-item" href="{{ route('perfil') }}">
                     <i class="bi bi-person-circle"></i> Mi Perfil
                 </a>
             </li>
             <li>
-                <a class="dropdown-item" href="{{ url('/configuracion') }}">
+                <a class="dropdown-item" href="{{ route('configuracion') }}">
                     <i class="bi bi-gear-fill"></i> Configuración
                 </a>
             </li>

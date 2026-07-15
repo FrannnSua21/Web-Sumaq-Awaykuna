@@ -5,11 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Intranet de Trabajo | Sumaq Awaykuna</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        .swal-rounded {
+            border-radius: 25px !important;
+        }
+
         :root {
             --cream: #F8F2E7;
             --cream-deep: #F1E7D5;
@@ -46,7 +52,7 @@
             position: relative;
         }
 
-        /* ---------- Decorative backdrop ---------- */
+
         .backdrop {
             position: fixed;
             inset: 0;
@@ -111,7 +117,7 @@
             opacity: .35;
         }
 
-        /* ---------- Liquid glass card ---------- */
+
         .glass-wrap {
             position: relative;
             z-index: 2;
@@ -385,10 +391,16 @@
 
             <h1 class="brand-title">INTRANET DE TRABAJO<br>SUMAQ AWAYKUNA</h1>
 
-            <form action="procesar_login.php" method="POST" autocomplete="off">
+            <form action="{{ route('login') }}" method="POST" autocomplete="off">
+                @csrf
                 <div class="field-group">
                     <i class="icon-left bi bi-person"></i>
-                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" required>
+                    <input
+                        type="text"
+                        name="username"
+                        class="form-control"
+                        placeholder="Usuario"
+                        required>
                     <i class="icon-right bi bi-people-fill"></i>
                 </div>
 
@@ -398,13 +410,10 @@
                     <i class="icon-right icon-toggle bi bi-eye-fill" id="togglePassword" role="button" tabindex="0" aria-label="Mostrar contraseña"></i>
                 </div>
 
-                <!-- <button type="submit" class="btn-ingresar">Ingresar al Sistema</button> -->
-
-                <a href="{{ route('dashboard') }}"
-                    class="btn-ingresar"
-                    style="display: inline-block; text-decoration: none; text-align: center;">
+                <button type="submit" class="btn-ingresar">
                     Ingresar al Sistema
-                </a>
+                </button>
+
 
                 <div class="forgot-wrap mt-3">
                     <a href=" {{  route('password.request') }}">¿Olvidaste tu contraseña?</a>
@@ -417,32 +426,124 @@
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         function setupPasswordToggle(inputId, toggleId) {
+
             const input = document.getElementById(inputId);
             const toggle = document.getElementById(toggleId);
+
             if (!input || !toggle) return;
 
+
             const flip = () => {
+
                 const isHidden = input.type === 'password';
+
                 input.type = isHidden ? 'text' : 'password';
+
                 toggle.classList.toggle('bi-eye-fill', !isHidden);
+
                 toggle.classList.toggle('bi-eye-slash-fill', isHidden);
-                toggle.setAttribute('aria-label', isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña');
+
+                toggle.setAttribute(
+                    'aria-label',
+                    isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña'
+                );
+
             };
 
+
             toggle.addEventListener('click', flip);
+
+
             toggle.addEventListener('keydown', function(e) {
+
                 if (e.key === 'Enter' || e.key === ' ') {
+
                     e.preventDefault();
+
                     flip();
+
                 }
+
             });
+
         }
 
-        setupPasswordToggle('passwordField', 'togglePassword');
+
+        setupPasswordToggle(
+            'passwordField',
+            'togglePassword'
+        );
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            title: "¡Excelente!",
+            text: "{{ session('success') }}",
+            icon: "success",
+
+            timer: 1500,
+            showConfirmButton: false,
+
+            background: "#F8F2E7",
+            color: "#4A2233",
+
+            customClass: {
+                popup: 'swal-rounded'
+            }
+        });
+    </script>
+    @endif
+
+
+
+    @if(session('logout_success'))
+    <script>
+        Swal.fire({
+            title: "Sesión cerrada",
+            text: "{{ session('logout_success') }}",
+            icon: "info",
+
+            timer: 1500,
+            showConfirmButton: false,
+
+            background: "#F8F2E7",
+            color: "#4A2233",
+
+            customClass: {
+                popup: 'swal-rounded'
+            }
+        });
+    </script>
+    @endif
+
+
+
+    @if(session('login_error'))
+    <script>
+        Swal.fire({
+            title: "No se pudo iniciar sesión",
+            text: "{{ session('login_error') }}",
+            icon: "error",
+
+            timer: 1800,
+            showConfirmButton: false,
+
+            background: "#F8F2E7",
+            color: "#4A2233",
+
+            customClass: {
+                popup: 'swal-rounded'
+            }
+        });
+    </script>
+    @endif
 </body>
 
 </html>

@@ -5,11 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Crear Cuenta | Sumaq Awaykuna</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        .swal-rounded {
+            border-radius: 25px !important;
+        }
         :root {
             --cream: #F8F2E7;
             --cream-deep: #F1E7D5;
@@ -46,7 +51,7 @@
             position: relative;
         }
 
-        /* ---------- Decorative backdrop ---------- */
+
         .backdrop {
             position: fixed;
             inset: 0;
@@ -111,7 +116,7 @@
             opacity: .35;
         }
 
-        /* ---------- Liquid glass card ---------- */
+
         .glass-wrap {
             position: relative;
             z-index: 2;
@@ -430,7 +435,9 @@
 
             <h1 class="brand-title">CREA TU CUENTA<br><span class="brand-subtitle">SUMAQ AWAYKUNA</span></h1>
 
-            <form action="procesar_registro.php" method="POST" autocomplete="off">
+            <form action="{{ route('register') }}" method="POST" autocomplete="off">
+
+                @csrf
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <div class="field-group mb-0">
@@ -446,9 +453,57 @@
                     </div>
                 </div>
 
+
+                <div class="row g-3 mt-1">
+
+                    <div class="col-sm-6">
+                        <div class="field-group mb-0">
+                            <i class="icon-left bi bi-person-vcard"></i>
+                            <input
+                                type="text"
+                                name="dni"
+                                maxlength="8"
+                                class="form-control"
+                                placeholder="DNI"
+                                required>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <div class="field-group mb-0">
+                            <i class="icon-left bi bi-gender-ambiguous"></i>
+
+                            <select name="sexo" class="form-control" required>
+                                <option value="">Sexo</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <div class="field-group mt-3">
                     <i class="icon-left bi bi-envelope"></i>
                     <input type="email" name="correo" class="form-control" placeholder="Correo electrónico" required>
+                </div>
+
+
+                <div class="field-group">
+
+                    <i class="icon-left bi bi-telephone"></i>
+
+                    <input
+                        type="text"
+                        name="telefono"
+                        maxlength="9"
+                        class="form-control"
+                        placeholder="+51 Teléfono"
+                        required>
+
                 </div>
 
                 <div class="field-group">
@@ -468,7 +523,7 @@
                     <div class="col-sm-6">
                         <div class="field-group mb-0">
                             <i class="icon-left bi bi-lock-fill"></i>
-                            <input type="password" name="password_confirm" id="passwordConfirmField" class="form-control" placeholder="Confirmar" required>
+                            <input type="password" name="password_confirmation" id="passwordConfirmField" class="form-control" placeholder="Confirmar" required>
                             <i class="icon-right icon-toggle bi bi-eye-fill" id="toggleConfirmPassword" role="button" tabindex="0" aria-label="Mostrar contraseña"></i>
                         </div>
                     </div>
@@ -490,33 +545,137 @@
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <script>
         function setupPasswordToggle(inputId, toggleId) {
+
             const input = document.getElementById(inputId);
             const toggle = document.getElementById(toggleId);
+
             if (!input || !toggle) return;
 
+
             const flip = () => {
+
                 const isHidden = input.type === 'password';
+
                 input.type = isHidden ? 'text' : 'password';
+
+
                 toggle.classList.toggle('bi-eye-fill', !isHidden);
+
                 toggle.classList.toggle('bi-eye-slash-fill', isHidden);
-                toggle.setAttribute('aria-label', isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña');
+
+
+                toggle.setAttribute(
+                    'aria-label',
+                    isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña'
+                );
             };
 
+
             toggle.addEventListener('click', flip);
+
+
             toggle.addEventListener('keydown', function(e) {
+
                 if (e.key === 'Enter' || e.key === ' ') {
+
                     e.preventDefault();
+
                     flip();
+
                 }
+
             });
+
         }
 
-        setupPasswordToggle('passwordField', 'togglePassword');
-        setupPasswordToggle('passwordConfirmField', 'toggleConfirmPassword');
+
+        setupPasswordToggle(
+            'passwordField',
+            'togglePassword'
+        );
+
+
+        setupPasswordToggle(
+            'passwordConfirmField',
+            'toggleConfirmPassword'
+        );
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    @if(session('success'))
+    <script>
+        Swal.fire({
+
+            title: "¡Cuenta creada!",
+            text: "{{ session('success') }}",
+            icon: "success",
+
+            timer: 1500,
+            showConfirmButton: false,
+
+            background: "#F8F2E7",
+            color: "#4A2233",
+
+            customClass: {
+                popup: 'swal-rounded'
+            }
+
+        });
+    </script>
+    @endif
+
+
+    @if(session('error'))
+    <script>
+        Swal.fire({
+
+            title: "No se pudo crear la cuenta",
+            text: "{{ session('error') }}",
+            icon: "error",
+
+            timer: 1800,
+            showConfirmButton: false,
+
+            background: "#F8F2E7",
+            color: "#4A2233",
+
+            customClass: {
+                popup: 'swal-rounded'
+            }
+
+        });
+    </script>
+    @endif
+
+
+    @if($errors->any())
+    <script>
+        Swal.fire({
+
+            title: "Datos incorrectos",
+            text: "{{ $errors->first() }}",
+            icon: "warning",
+
+            timer: 1800,
+            showConfirmButton: false,
+
+            background: "#F8F2E7",
+            color: "#4A2233",
+
+            customClass: {
+                popup: 'swal-rounded'
+            }
+
+        });
+    </script>
+    @endif
 </body>
 
 </html>

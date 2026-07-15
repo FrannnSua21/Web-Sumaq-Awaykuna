@@ -4,6 +4,10 @@
 
 @push('styles')
 <style>
+    .swal-rounded {
+        border-radius: 25px !important;
+    }
+
     .quote-banner {
         display: flex;
         align-items: center;
@@ -286,5 +290,59 @@
 
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+<!-- @if(session('login_success'))
+<script>
+    Swal.fire({
+
+        title: "¡Bienvenido!",
+        text: "{{ session('login_success') }}",
+        icon: "success",
+
+        confirmButtonText: "Ingresar",
+        confirmButtonColor: "#6E1E36",
+
+        background: "#F8F2E7",
+        color: "#4A2233",
+
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        }
+
+    });
+</script>
+@endif -->
+
+
+@if(session('login_success'))
+<script>
+    Swal.fire({
+
+        title: "¡Bienvenido!",
+        text: "{{ session('login_success') }}",
+        icon: "success",
+
+        timer: 1000,
+        showConfirmButton: false,
+
+        background: "#F8F2E7",
+        color: "#4A2233",
+
+        customClass: {
+            popup: 'swal-rounded'
+        },
+
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+
+    });
+</script>
+@endif
 @endsection

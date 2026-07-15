@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        .swal-rounded {
+            border-radius: 25px !important;
+        }
+
         :root {
             --cream: #F8F2E7;
             --cream-deep: #F1E7D5;
